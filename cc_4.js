@@ -14,3 +14,23 @@ let products = [
 
 //Step 3: write for...of loop to add discounts & switch statement
 
+for (const product of products) {
+    let categoryDiscount = 0; // 0% discount is the default
+    switch (product.productCategory) {
+        case "electronics":
+            categoryDiscount = 0.20; //20% discount
+            break;
+            case "apparel": 
+            categoryDiscount = 0.15; //15% discount
+            break;
+            case "groceries":
+            case "household": //group cases with same discount rate
+            categoryDiscount = 0.10; //10% discount
+            
+            break;
+    
+        default:
+            break;
+    }
+
+}
