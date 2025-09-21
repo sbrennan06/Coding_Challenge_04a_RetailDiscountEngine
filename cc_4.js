@@ -26,11 +26,18 @@ for (const product of products) {
             case "groceries":
             case "household": //group cases with same discount rate
             categoryDiscount = 0.10; //10% discount
-            
-            break;
-    
+            break;  
         default:
+            categoryDiscount = 0; //no discount
             break;
     }
+    let discountPrice = product.productPrice * (1 - categoryDiscount);
+   
+  console.log(`Product: ${product.productName}, Category: ${product.productCategory}`, `Original Price: $${product.productPrice}, 
+    Discount: ${(categoryDiscount * 100).toFixed(0)}%,`, `Discounted Price: $${discountPrice.toFixed(2)}`)
+ }
 
-}
+
+
+
+
