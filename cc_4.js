@@ -124,3 +124,5 @@ let labels = {
         console.log(label + ": " + value);
        }
 console.log("Discounted Price: $" + discountedPrice.toFixed(2));
+
+//step 7 - 
