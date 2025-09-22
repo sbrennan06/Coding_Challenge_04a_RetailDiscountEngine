@@ -74,7 +74,7 @@ for (let i = 1; i <= 3; i++) {
     }
 let priceAfterCategory = (+product.productPrice) * (1 - categoryDiscount);
 subtotal = subtotal + priceAfterCategory;
-//console.log(916subtotal.toFixed(2));
+//console.log(subtotal.toFixed(2));
 let inventory = +product.productInventoryCount;
 if (inventory > 0) {
     product.productInventoryCount --;
@@ -83,6 +83,44 @@ if (inventory > 0) {
 }
     }
     const finalTotal = subtotal * (1 - extraDiscount);
-    console.log("Customer " + i + " Total: $" + finalTotal.toFixed(2)); 
-    console.log("==============================================================")
+    console.log("Customer " + i + " Total: $" + finalTotal.toFixed(2)); //step 5 console log output
 }
+    console.log("==============================================================") 
+    //just want to break up the console log
+//step 6 - use for...in to log key & value of pairs for a product after discounts applied
+
+let selectedProduct = products[0]; // product0 = headphones from line 6
+let labels = {
+    productName: "Product Name",
+    productCategory: "Product Category",
+    productPrice: "Product Original Price",
+    productInventoryCount: "Product Inventory Remaining (Count)"
+
+}
+  let categoryDiscount = 0; // 0% discount is the default
+    switch (selectedProduct.productCategory) {
+        case "electronics":
+            categoryDiscount = 0.20; //20% discount
+            break;
+            case "apparel": 
+            categoryDiscount = 0.15; //15% discount
+            break;
+            case "groceries":
+            case "household": //group cases with same discount rate
+            categoryDiscount = 0.10; //10% discount
+            break;  
+        default:
+            categoryDiscount = 0; //no discount
+            break;
+       }
+
+       let discountedPrice = (+selectedProduct.productPrice) * (1 - categoryDiscount);
+       for (const key in selectedProduct) {const label = labels[key] || key;
+        
+        let value = selectedProduct[key];
+        if (key === "productPrice") {
+            value = "$" + (+value).toFixed(2);
+        }
+        console.log(label + ": " + value);
+       }
+console.log("Discounted Price: $" + discountedPrice.toFixed(2));
