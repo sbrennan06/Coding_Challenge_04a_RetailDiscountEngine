@@ -144,3 +144,5 @@ for (const [key, value] of Object.entries(product)) {
 }
 
 }
+
+//this was so hard 😭
