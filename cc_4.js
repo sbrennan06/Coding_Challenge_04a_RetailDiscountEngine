@@ -125,4 +125,22 @@ let labels = {
        }
 console.log("Discounted Price: $" + discountedPrice.toFixed(2));
 
-//step 7 - 
+//step 7 - use object.entries to log all product info after inventory is updated
+console.log("==============================================================");
+console.log("All products after inventory update:");
+for (const product of products) {
+
+    console.log(" "); //add blank row for ease of review
+
+    console.log("Product: " + product.productName);
+for (const [key, value] of Object.entries(product)) {
+    let label = key.replace(/([A-Z])/g, "$1");    //make labels to avoid camelCase in console log
+    label = label[0].toUpperCase() + label.slice(1);
+
+    let out = value;
+    if (key === "productPrice") out = "$" + (+value).toFixed(2); //change key to allow for $ symbol
+
+    console.log(label + ": " + out);
+}
+
+}
